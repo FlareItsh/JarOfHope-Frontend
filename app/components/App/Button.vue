@@ -1,5 +1,17 @@
 <template>
+  <NuxtLink
+    v-if="to || href"
+    :to="to || href"
+    :class="[
+      'focus:ring-ring ring-offset-background inline-flex cursor-pointer items-center justify-center rounded-md font-medium transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none disabled:pointer-events-none disabled:opacity-50',
+      sizeClasses[size],
+      variantClasses[variant],
+    ]"
+  >
+    <slot />
+  </NuxtLink>
   <button
+    v-else
     :class="[
       'focus:ring-ring ring-offset-background inline-flex cursor-pointer items-center justify-center rounded-md font-medium transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-none disabled:pointer-events-none disabled:opacity-50',
       sizeClasses[size],
@@ -25,6 +37,14 @@ const props = defineProps({
     type: String,
     default: 'default',
     validator: (value) => ['default', 'sm', 'lg', 'icon'].includes(value),
+  },
+  href: {
+    type: String,
+    default: null,
+  },
+  to: {
+    type: [String, Object],
+    default: null,
   },
 })
 

@@ -17,15 +17,15 @@
         <h1
           class="font-primary text-foreground mb-8 text-5xl font-bold tracking-tight md:text-7xl"
         >
-          Speak Your Truth.<br />
-          <span class="text-primary">Lighten the Load.</span>
+          Voice Your Concerns.<br />
+          <span class="text-primary">Shape Our School.</span>
         </h1>
         <p
           class="text-muted-foreground mx-auto mt-4 mb-10 max-w-2xl text-xl leading-relaxed"
         >
           Jar of Hope is an anonymous freedom board for STI College of Davao
-          students. Share your struggles, drop your burdens, and express
-          yourself freely.
+          students. Share your feedback, report issues, and help us improve school
+          events and services.
         </p>
         <div
           class="flex flex-col items-center justify-center gap-4 sm:flex-row"
@@ -70,8 +70,7 @@
             How Jar of Hope Works
           </h2>
           <p class="text-muted-foreground mx-auto mt-4 max-w-2xl">
-            A simple, anonymous way to connect with your peers and lighten the
-            load.
+            A simple, anonymous way to voice your concerns and improve our campus.
           </p>
         </div>
 
@@ -129,10 +128,10 @@
                 ></path>
               </svg>
             </div>
-            <h3 class="text-foreground text-xl font-bold">Safe & Supportive</h3>
+            <h3 class="text-foreground text-xl font-bold">Direct to Council</h3>
             <p class="text-muted-foreground leading-relaxed">
-              A moderated environment dedicated to uplifting student mental
-              health and fostering mutual support.
+              Your concerns are heard directly by the Supreme Student Council and
+              school administration so action can be taken.
             </p>
           </div>
 
@@ -156,10 +155,10 @@
                 ></path>
               </svg>
             </div>
-            <h3 class="text-foreground text-xl font-bold">Community Driven</h3>
+            <h3 class="text-foreground text-xl font-bold">Track Your Feedback</h3>
             <p class="text-muted-foreground leading-relaxed">
-              Read stories from peers facing similar challenges. Leave reactions
-              to show your support.
+              Create an optional anonymous account to track the status of your
+              concerns and read replies from the council.
             </p>
           </div>
         </div>
@@ -175,11 +174,11 @@
         <h2
           class="text-foreground font-primary mb-6 text-3xl font-bold md:text-5xl"
         >
-          Ready to lighten the load?
+          Ready to be heard?
         </h2>
         <p class="text-muted-foreground mb-10 text-xl">
-          Join hundreds of students already finding peace and support through
-          anonymous sharing.
+          Join hundreds of students already shaping the future of STI College of Davao
+          through anonymous feedback.
         </p>
         <AppButton
           @click="isReminderModalOpen = true"
@@ -234,8 +233,8 @@
       </div>
       <p>
         If you choose to just "send anonymously" and forget your credentials,
-        your message will still be delivered, but you won't be able to log back
-        in to see if you received a response.
+        your concern will still be delivered, but you won't be able to log back
+        in to see if you received a response from the council.
       </p>
     </div>
     <template #footer>
@@ -246,7 +245,7 @@
       >
       <AppButton
         variant="primary"
-        @click="isReminderModalOpen = false"
+        href="/message"
         >I Understand, Let's Go</AppButton
       >
     </template>
