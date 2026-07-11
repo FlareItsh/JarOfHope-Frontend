@@ -4,7 +4,7 @@
       <div class="flex h-16 items-center justify-between">
         <a href="/">
           <div class="flex items-center">
-            <div class="flex-shrink-0">
+            <div class="shrink-0">
               <img
                 src="/icons/logo.png"
                 alt="Jar of Hope"
@@ -27,7 +27,7 @@
                 >Home</a
               >
               <a
-                href="#"
+                href="#about"
                 class="text-foreground hover:bg-accent hover:text-accent-foreground rounded-md px-3 py-2 text-sm font-medium transition-colors"
                 >About</a
               >

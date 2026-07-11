@@ -1,7 +1,5 @@
 <template>
-  <header>
-    <AppNavbar />
-  </header>
+  <AppNavbar class="sticky top-0 z-50" />
 
   <main class="flex min-h-screen flex-1 flex-col">
     <!-- Hero Section -->
@@ -25,13 +23,15 @@
         <p
           class="text-muted-foreground mx-auto mt-4 mb-10 max-w-2xl text-xl leading-relaxed"
         >
-          Jar of Hope is an anonymous freedom board for STI College of Davao students. Share your
-          struggles, drop your burdens, and express yourself freely.
+          Jar of Hope is an anonymous freedom board for STI College of Davao
+          students. Share your struggles, drop your burdens, and express
+          yourself freely.
         </p>
         <div
           class="flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <AppButton
+            @click="isReminderModalOpen = true"
             variant="primary"
             size="lg"
             class="w-full shadow-lg transition-all hover:shadow-xl sm:w-auto"
@@ -60,7 +60,10 @@
     </section>
 
     <!-- Features Section -->
-    <section class="bg-card border-border border-y py-24">
+    <section
+      id="about"
+      class="bg-card border-border border-y py-24"
+    >
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mb-16 text-center">
           <h2 class="text-foreground font-primary text-3xl font-bold">
@@ -179,6 +182,7 @@
           anonymous sharing.
         </p>
         <AppButton
+          @click="isReminderModalOpen = true"
           variant="primary"
           size="lg"
           class="shadow-lg transition-all hover:shadow-xl"
@@ -189,7 +193,68 @@
     </section>
   </main>
 
-  <footer>
-    <AppFooter />
-  </footer>
+  <AppFooter />
+
+  <AppModal
+    v-model="isReminderModalOpen"
+    title="Before You Write..."
+  >
+    <div class="text-muted-foreground space-y-4 leading-relaxed">
+      <p>
+        Your privacy is our priority. Every time you drop a message, you will be
+        given a
+        <strong class="text-foreground">new, random anonymous nickname</strong>.
+      </p>
+      <div
+        class="bg-primary/10 text-primary border-primary/20 rounded-xl border p-4"
+      >
+        <h4 class="mb-1 flex items-center gap-2 font-bold">
+          <svg
+            class="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+          Important Reminder
+        </h4>
+        <p class="text-sm">
+          If you want to read replies from the council or administration later,
+          <strong class="font-bold"
+            >you must remember your nickname and password</strong
+          >.
+        </p>
+      </div>
+      <p>
+        If you choose to just "send anonymously" and forget your credentials,
+        your message will still be delivered, but you won't be able to log back
+        in to see if you received a response.
+      </p>
+    </div>
+    <template #footer>
+      <AppButton
+        variant="outline"
+        @click="isReminderModalOpen = false"
+        >Cancel</AppButton
+      >
+      <AppButton
+        variant="primary"
+        @click="isReminderModalOpen = false"
+        >I Understand, Let's Go</AppButton
+      >
+    </template>
+  </AppModal>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+
+const isReminderModalOpen = ref(false)
+</script>
