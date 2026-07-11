@@ -1,1 +1,143 @@
 @import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar-background);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius: var(--radius);
+
+  --font-barlow: "Barlow Condensed", sans-serif;
+  --font-primary: "Poppins", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-serif: "Playfair Display", serif;
+
+  --color-primary-light: hsl(204 100% 50%);
+  --color-primary-dark: hsl(204 100% 25%);
+  --color-primary-ring: hsl(204 100% 37%);
+  --color-navy: hsl(204 100% 15%);
+}
+
+:root {
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(204 20% 10%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(204 20% 10%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(204 20% 10%);
+  --primary: hsl(204 100% 37%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(57 100% 50%);
+  --secondary-foreground: hsl(204 100% 37%);
+  --muted: hsl(204 20% 96%);
+  --muted-foreground: hsl(204 15% 45%);
+  --accent: hsl(57 100% 50%);
+  --accent-foreground: hsl(204 100% 37%);
+  --destructive: hsl(0 84.2% 60.2%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border: hsl(204 20% 90%);
+  --input: hsl(204 20% 90%);
+  --ring: hsl(204 100% 37%);
+  --chart-1: hsl(204 100% 37%);
+  --chart-2: hsl(57 100% 45%);
+  --chart-3: hsl(197 37% 24%);
+  --chart-4: hsl(43 74% 66%);
+  --chart-5: hsl(27 87% 67%);
+  --radius: 0.5rem;
+  --sidebar-background: hsl(204 20% 98%);
+  --sidebar-foreground: hsl(204 20% 30%);
+  --sidebar-primary: hsl(204 100% 37%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(57 100% 50%);
+  --sidebar-accent-foreground: hsl(204 100% 37%);
+  --sidebar-border: hsl(204 20% 90%);
+  --sidebar-ring: hsl(204 100% 37%);
+}
+
+.dark {
+  --background: hsl(204 50% 4%);
+  --foreground: hsl(204 10% 96%);
+  --card: hsl(204 50% 4%);
+  --card-foreground: hsl(204 10% 96%);
+  --popover: hsl(204 50% 4%);
+  --popover-foreground: hsl(204 10% 96%);
+  --primary: hsl(204 100% 45%);
+  --primary-foreground: hsl(0 0% 10%);
+  --secondary: hsl(57 100% 45%);
+  --secondary-foreground: hsl(204 100% 15%);
+  --muted: hsl(204 15% 15%);
+  --muted-foreground: hsl(204 10% 65%);
+  --accent: hsl(57 100% 45%);
+  --accent-foreground: hsl(204 100% 15%);
+  --destructive: hsl(0 84% 60%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border: hsl(204 15% 20%);
+  --input: hsl(204 15% 20%);
+  --ring: hsl(204 100% 45%);
+  --chart-1: hsl(204 100% 45%);
+  --chart-2: hsl(57 100% 45%);
+  --chart-3: hsl(197 37% 24%);
+  --chart-4: hsl(43 74% 66%);
+  --chart-5: hsl(27 87% 67%);
+  --sidebar-background: hsl(204 50% 6%);
+  --sidebar-foreground: hsl(204 10% 90%);
+  --sidebar-primary: hsl(204 100% 45%);
+  --sidebar-primary-foreground: hsl(0 0% 10%);
+  --sidebar-accent: hsl(57 100% 45%);
+  --sidebar-accent-foreground: hsl(204 100% 15%);
+  --sidebar-border: hsl(204 15% 20%);
+  --sidebar-ring: hsl(204 100% 45%);
+}
+
+* {
+  @apply font-primary scroll-smooth;
+}
+
+body {
+  @apply bg-background;
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--color-blue-100);
+    border-radius: 100px;
+  }
+}
