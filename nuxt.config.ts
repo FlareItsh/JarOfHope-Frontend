@@ -7,16 +7,9 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
-  modules: [
-    '@nuxt/fonts',
-    '@nuxt/icon',
-    '@nuxt/image',
-    '@nuxtjs/ngrok'
-  ],
+  modules: ['@nuxt/fonts', '@nuxt/icon', '@nuxt/image', '@nuxtjs/ngrok'],
 
   vite: {
-    plugins: [
-      tailwindcss(),
-    ],
+    plugins: [tailwindcss()],
   },
 })

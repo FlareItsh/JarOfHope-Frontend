@@ -1,9 +1,14 @@
 import { $api, useApi } from '~/composables/useApi'
 export class BaseService {
-  async request<T>(url: string, method: string, params: object = {}, extraConfig: any = {}): Promise<T> {
+  async request<T>(
+    url: string,
+    method: string,
+    params: object = {},
+    extraConfig: any = {}
+  ): Promise<T> {
     const config: any = {
       method,
-      ...extraConfig
+      ...extraConfig,
     }
 
     if (method.toUpperCase() === 'GET') {
@@ -16,7 +21,10 @@ export class BaseService {
       return await $api<T>(url, config)
     } catch (error: any) {
       const status = error?.response?.status
-      const message = error?.response?._data?.message || error?.data?.message || error?.message
+      const message =
+        error?.response?._data?.message ||
+        error?.data?.message ||
+        error?.message
 
       switch (status) {
         case 400:
@@ -26,7 +34,9 @@ export class BaseService {
         case 429:
           throw new Error(message || 'Validation or Request Error')
         case 500:
-          throw new Error('Server error. Please try again or contact the administrator.')
+          throw new Error(
+            'Server error. Please try again or contact the administrator.'
+          )
         default:
           throw new Error(message || 'Something went wrong. Please try again.')
       }
@@ -38,7 +48,10 @@ export class BaseService {
   }
 
   useList<T>(params: any = {}, options: any = {}) {
-    return this.useRequest<T>((this as any).resource, { ...options, query: params })
+    return this.useRequest<T>((this as any).resource, {
+      ...options,
+      query: params,
+    })
   }
 
   useShow<T>(uuid: string | (() => string), options: any = {}) {

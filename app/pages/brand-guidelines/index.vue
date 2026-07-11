@@ -1,14 +1,14 @@
 <template>
   <div
-    class="min-h-screen p-8 bg-background text-foreground transition-colors duration-300"
+    class="bg-background text-foreground min-h-screen p-8 transition-colors duration-300"
   >
-    <div class="max-w-5xl mx-auto space-y-12">
+    <div class="mx-auto max-w-5xl space-y-12">
       <!-- Header -->
       <header
-        class="border-b border-border pb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
+        class="border-border flex flex-col items-start justify-between gap-4 border-b pb-6 sm:flex-row sm:items-center"
       >
         <div>
-          <h1 class="text-4xl font-bold tracking-tight text-primary">
+          <h1 class="text-primary text-4xl font-bold tracking-tight">
             Brand Guidelines
           </h1>
           <p class="text-muted-foreground mt-2">
@@ -18,7 +18,7 @@
         <div class="flex gap-4">
           <NuxtLink
             to="/"
-            class="px-4 py-2 border border-border bg-card hover:bg-accent hover:text-accent-foreground rounded-md text-sm font-medium transition-colors"
+            class="border-border bg-card hover:bg-accent hover:text-accent-foreground rounded-md border px-4 py-2 text-sm font-medium transition-colors"
           >
             Back to Home
           </NuxtLink>
@@ -27,21 +27,21 @@
 
       <!-- Color Palette -->
       <section class="space-y-6">
-        <h2 class="text-2xl font-semibold border-b border-border pb-2">
+        <h2 class="border-border border-b pb-2 text-2xl font-semibold">
           Color Palette
         </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           <!-- Primary -->
           <div
-            class="rounded-xl border border-border overflow-hidden bg-card text-card-foreground shadow-sm"
+            class="border-border bg-card text-card-foreground overflow-hidden rounded-xl border shadow-sm"
           >
-            <div class="h-32 bg-primary flex items-center justify-center p-4">
+            <div class="bg-primary flex h-32 items-center justify-center p-4">
               <span class="text-primary-foreground font-medium">Primary</span>
             </div>
-            <div class="p-4 space-y-1">
+            <div class="space-y-1 p-4">
               <p class="font-medium">Primary Color</p>
-              <p class="text-sm text-muted-foreground">
+              <p class="text-muted-foreground text-sm">
                 Used for main brand elements and primary buttons.
               </p>
             </div>
@@ -49,16 +49,16 @@
 
           <!-- Secondary -->
           <div
-            class="rounded-xl border border-border overflow-hidden bg-card text-card-foreground shadow-sm"
+            class="border-border bg-card text-card-foreground overflow-hidden rounded-xl border shadow-sm"
           >
-            <div class="h-32 bg-secondary flex items-center justify-center p-4">
+            <div class="bg-secondary flex h-32 items-center justify-center p-4">
               <span class="text-secondary-foreground font-medium"
                 >Secondary</span
               >
             </div>
-            <div class="p-4 space-y-1">
+            <div class="space-y-1 p-4">
               <p class="font-medium">Secondary Color</p>
-              <p class="text-sm text-muted-foreground">
+              <p class="text-muted-foreground text-sm">
                 Used for secondary actions and highlights.
               </p>
             </div>
@@ -66,14 +66,14 @@
 
           <!-- Accent -->
           <div
-            class="rounded-xl border border-border overflow-hidden bg-card text-card-foreground shadow-sm"
+            class="border-border bg-card text-card-foreground overflow-hidden rounded-xl border shadow-sm"
           >
-            <div class="h-32 bg-accent flex items-center justify-center p-4">
+            <div class="bg-accent flex h-32 items-center justify-center p-4">
               <span class="text-accent-foreground font-medium">Accent</span>
             </div>
-            <div class="p-4 space-y-1">
+            <div class="space-y-1 p-4">
               <p class="font-medium">Accent Color</p>
-              <p class="text-sm text-muted-foreground">
+              <p class="text-muted-foreground text-sm">
                 Used for interactive elements and subtle highlights.
               </p>
             </div>
@@ -81,18 +81,18 @@
 
           <!-- Destructive -->
           <div
-            class="rounded-xl border border-border overflow-hidden bg-card text-card-foreground shadow-sm"
+            class="border-border bg-card text-card-foreground overflow-hidden rounded-xl border shadow-sm"
           >
             <div
-              class="h-32 bg-destructive flex items-center justify-center p-4"
+              class="bg-destructive flex h-32 items-center justify-center p-4"
             >
               <span class="text-destructive-foreground font-medium"
                 >Destructive</span
               >
             </div>
-            <div class="p-4 space-y-1">
+            <div class="space-y-1 p-4">
               <p class="font-medium">Destructive Color</p>
-              <p class="text-sm text-muted-foreground">
+              <p class="text-muted-foreground text-sm">
                 Used for errors, warnings, and dangerous actions.
               </p>
             </div>
@@ -100,14 +100,14 @@
 
           <!-- Muted -->
           <div
-            class="rounded-xl border border-border overflow-hidden bg-card text-card-foreground shadow-sm"
+            class="border-border bg-card text-card-foreground overflow-hidden rounded-xl border shadow-sm"
           >
-            <div class="h-32 bg-muted flex items-center justify-center p-4">
+            <div class="bg-muted flex h-32 items-center justify-center p-4">
               <span class="text-muted-foreground font-medium">Muted</span>
             </div>
-            <div class="p-4 space-y-1">
+            <div class="space-y-1 p-4">
               <p class="font-medium">Muted Color</p>
-              <p class="text-sm text-muted-foreground">
+              <p class="text-muted-foreground text-sm">
                 Used for disabled states and subtle backgrounds.
               </p>
             </div>
@@ -115,27 +115,27 @@
 
           <!-- Background & Foreground -->
           <div
-            class="rounded-xl border border-border overflow-hidden bg-card text-card-foreground shadow-sm"
+            class="border-border bg-card text-card-foreground overflow-hidden rounded-xl border shadow-sm"
           >
             <div class="flex h-32">
               <div
-                class="flex-1 bg-background flex items-center justify-center border-r border-border"
+                class="bg-background border-border flex flex-1 items-center justify-center border-r"
               >
-                <span class="text-foreground font-medium text-xs"
+                <span class="text-foreground text-xs font-medium"
                   >Background</span
                 >
               </div>
               <div
-                class="flex-1 bg-foreground flex items-center justify-center"
+                class="bg-foreground flex flex-1 items-center justify-center"
               >
-                <span class="text-background font-medium text-xs"
+                <span class="text-background text-xs font-medium"
                   >Foreground</span
                 >
               </div>
             </div>
-            <div class="p-4 space-y-1">
+            <div class="space-y-1 p-4">
               <p class="font-medium">Base Colors</p>
-              <p class="text-sm text-muted-foreground">
+              <p class="text-muted-foreground text-sm">
                 The main background and text colors.
               </p>
             </div>
@@ -145,31 +145,31 @@
 
       <!-- Typography & Components -->
       <section class="space-y-6">
-        <h2 class="text-2xl font-semibold border-b border-border pb-2">
+        <h2 class="border-border border-b pb-2 text-2xl font-semibold">
           Typography & Components
         </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="grid grid-cols-1 gap-12 md:grid-cols-2">
           <!-- Text Sample -->
           <div class="space-y-6">
             <div class="space-y-3">
-              <h1 class="text-4xl font-bold font-primary text-foreground">
+              <h1 class="font-primary text-foreground text-4xl font-bold">
                 Heading 1
               </h1>
-              <h2 class="text-3xl font-semibold font-primary text-foreground">
+              <h2 class="font-primary text-foreground text-3xl font-semibold">
                 Heading 2
               </h2>
-              <h3 class="text-2xl font-semibold font-primary text-foreground">
+              <h3 class="font-primary text-foreground text-2xl font-semibold">
                 Heading 3
               </h3>
               <p
-                class="text-base text-foreground font-sans mt-4 leading-relaxed"
+                class="text-foreground mt-4 font-sans text-base leading-relaxed"
               >
                 This is a regular paragraph text using the standard sans font.
                 It demonstrates how normal content looks against the background.
                 Our design focuses on clarity and readibility.
               </p>
-              <p class="text-sm text-muted-foreground mt-2">
+              <p class="text-muted-foreground mt-2 text-sm">
                 This is smaller, muted text used for captions, help text, or
                 secondary information.
               </p>
@@ -178,35 +178,27 @@
 
           <!-- UI Elements Sample -->
           <div
-            class="space-y-6 bg-card border border-border p-6 rounded-xl shadow-sm"
+            class="bg-card border-border space-y-6 rounded-xl border p-6 shadow-sm"
           >
-            <h3 class="text-lg font-medium text-foreground mb-4">
+            <h3 class="text-foreground mb-4 text-lg font-medium">
               Interactive Elements
             </h3>
 
             <div class="flex flex-wrap gap-4">
-              <AppButton variant="primary">
-                Primary Button
-              </AppButton>
-              <AppButton variant="secondary">
-                Secondary
-              </AppButton>
-              <AppButton variant="outline">
-                Outline
-              </AppButton>
-              <AppButton variant="destructive">
-                Danger
-              </AppButton>
+              <AppButton variant="primary"> Primary Button </AppButton>
+              <AppButton variant="secondary"> Secondary </AppButton>
+              <AppButton variant="outline"> Outline </AppButton>
+              <AppButton variant="destructive"> Danger </AppButton>
             </div>
 
-            <div class="space-y-2 mt-8">
-              <label class="text-sm font-medium text-foreground"
+            <div class="mt-8 space-y-2">
+              <label class="text-foreground text-sm font-medium"
                 >Input Field</label
               >
               <input
                 type="text"
                 placeholder="Type something..."
-                class="w-full px-3 py-2 bg-background text-foreground border border-input rounded-md ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 transition"
+                class="bg-background text-foreground border-input ring-offset-background placeholder:text-muted-foreground focus:ring-ring w-full rounded-md border px-3 py-2 transition focus:ring-2 focus:ring-offset-2 focus:outline-none"
               />
             </div>
           </div>
@@ -218,6 +210,6 @@
 
 <script setup>
 useHead({
-  title: "Brand Guidelines - Jar of Hope",
-});
+  title: 'Brand Guidelines - Jar of Hope',
+})
 </script>

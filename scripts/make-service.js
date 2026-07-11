@@ -12,9 +12,9 @@ if (!name) {
   process.exit(1)
 }
 
-const pascalCase = str => str.charAt(0).toUpperCase() + str.slice(1)
-const camelCase = str => str.charAt(0).toLowerCase() + str.slice(1)
-const kebabCase = str => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
+const pascalCase = (str) => str.charAt(0).toUpperCase() + str.slice(1)
+const camelCase = (str) => str.charAt(0).toLowerCase() + str.slice(1)
+const kebabCase = (str) => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
 
 const cleanName = name.replace(/Service$/i, '')
 const resourceName = pascalCase(cleanName)

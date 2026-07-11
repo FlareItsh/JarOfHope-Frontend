@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --color-background: var(--background);
@@ -36,10 +36,10 @@
 
   --radius: var(--radius);
 
-  --font-barlow: "Barlow Condensed", sans-serif;
-  --font-primary: "Poppins", sans-serif;
-  --font-sans: "DM Sans", sans-serif;
-  --font-serif: "Playfair Display", serif;
+  --font-barlow: 'Barlow Condensed', sans-serif;
+  --font-primary: 'Instrument Sans', sans-serif;
+  --font-sans: 'DM Sans', sans-serif;
+  --font-serif: 'Playfair Display', serif;
 
   --color-primary-light: hsl(204 100% 50%);
   --color-primary-dark: hsl(204 100% 25%);

@@ -8,8 +8,8 @@ export const useApi = <T>(url: string | (() => string), options: any = {}) => {
     headers: {
       Accept: 'application/json',
       ...options.headers,
-      Authorization: token.value ? `Bearer ${token.value}` : ''
-    }
+      Authorization: token.value ? `Bearer ${token.value}` : '',
+    },
   })
 }
 
@@ -23,7 +23,7 @@ export const $api = <T>(url: string, options: any = {}) => {
     headers: {
       Accept: 'application/json',
       ...options.headers,
-      Authorization: token.value ? `Bearer ${token.value}` : ''
-    }
+      Authorization: token.value ? `Bearer ${token.value}` : '',
+    },
   })
 }
