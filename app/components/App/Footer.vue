@@ -17,8 +17,11 @@
             class="mb-4 h-12 w-auto"
           />
           <p class="text-muted-foreground max-w-sm text-sm">
-            A safe space for student voices, shared stories, and mutual support.
+            A safe space for STI College of Davao student voices, shared stories, and mutual support.
             Drop your thoughts, lift your burdens, and let hope grow together.
+          </p>
+          <p class="mt-4 text-primary font-medium text-sm">
+            An initiative by the Supreme Student Council (Term 2026-2027)
           </p>
         </div>
 
@@ -92,8 +95,11 @@
         class="border-border mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 text-center md:flex-row md:gap-0 md:text-left"
       >
         <p class="text-muted-foreground text-sm">
-          &copy; {{ new Date().getFullYear() }} Jar of Hope. All rights
+          &copy; {{ new Date().getFullYear() }} Jar of Hope &mdash; STI College of Davao. All rights
           reserved.
+        </p>
+        <p class="text-muted-foreground text-sm">
+          Developed by <span class="text-foreground font-medium">Rayver Dasalla</span> (Senate President & Lead Developer)
         </p>
       </div>
     </div>

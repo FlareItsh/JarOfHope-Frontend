@@ -25,6 +25,7 @@
           <div>
             <h3 class="text-foreground text-xl font-bold">Senator Name</h3>
             <p class="text-primary mt-1 text-sm font-medium">Student Senator</p>
+            <p class="text-muted-foreground text-xs mt-1">Course / Track placeholder</p>
           </div>
         </div>
 
@@ -42,6 +43,7 @@
           <div>
             <h3 class="text-foreground text-xl font-bold">Senator Name</h3>
             <p class="text-primary mt-1 text-sm font-medium">Student Senator</p>
+            <p class="text-muted-foreground text-xs mt-1">Course / Track placeholder</p>
           </div>
         </div>
 
@@ -59,6 +61,7 @@
           <div>
             <h3 class="text-foreground text-xl font-bold">Senator Name</h3>
             <p class="text-primary mt-1 text-sm font-medium">Student Senator</p>
+            <p class="text-muted-foreground text-xs mt-1">Course / Track placeholder</p>
           </div>
         </div>
 
@@ -76,6 +79,7 @@
           <div>
             <h3 class="text-foreground text-xl font-bold">Senator Name</h3>
             <p class="text-primary mt-1 text-sm font-medium">Student Senator</p>
+            <p class="text-muted-foreground text-xs mt-1">Course / Track placeholder</p>
           </div>
         </div>
       </div>
