@@ -1,20 +1,36 @@
 <template>
-  <div class="h-24 bg-background flex items-center justify-between px-6 md:px-8 shrink-0">
+  <div
+    class="bg-background border-border flex shrink-0 items-center justify-between border-b px-6 py-3 md:px-8"
+  >
     <div class="flex items-center gap-2">
       <!-- Mobile Back Button -->
-      <button 
+      <button
         @click="$emit('back')"
-        class="md:hidden p-2 -ml-2 text-muted-foreground hover:bg-muted hover:text-foreground rounded-full transition"
+        class="text-muted-foreground hover:bg-muted hover:text-foreground -ml-2 rounded-full p-2 transition md:hidden"
       >
-        <Icon name="lucide:arrow-left" class="w-6 h-6" />
+        <Icon
+          name="lucide:arrow-left"
+          class="h-6 w-6"
+        />
       </button>
-      
-      <h2 class="font-bold text-foreground text-2xl md:text-3xl">Wally</h2>
+
+      <img
+        src="https://i.pravatar.cc/150?u=1"
+        alt="Avatar"
+        class="h-14 w-14 shrink-0 rounded-full object-cover shadow-sm"
+      />
+
+      <h2 class="text-foreground text-2xl font-bold md:text-3xl">Wally</h2>
     </div>
-    
+
     <div class="flex items-center">
-      <button class="p-2 text-muted-foreground hover:bg-muted hover:text-foreground rounded-full transition">
-        <Icon name="lucide:more-vertical" class="w-6 h-6" />
+      <button
+        class="text-muted-foreground hover:bg-muted hover:text-foreground rounded-full p-2 transition"
+      >
+        <Icon
+          name="lucide:more-vertical"
+          class="h-6 w-6"
+        />
       </button>
     </div>
   </div>

@@ -1,5 +1,7 @@
 <template>
-  <div class="border-border/50 bg-background flex justify-between p-4 items-center relative z-50">
+  <div
+    class="border-border bg-background relative z-50 flex items-center justify-between border px-6 py-4"
+  >
     <a href="/">
       <div class="flex items-center">
         <div class="shrink-0">
@@ -16,46 +18,52 @@
         </span>
       </div>
     </a>
-    
+
     <!-- Profile with Initials -->
     <div class="relative">
-      <button 
+      <button
         @click="isProfileMenuOpen = !isProfileMenuOpen"
-        class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm hover:bg-blue-200 transition focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+        class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-sm font-bold text-blue-600 transition hover:bg-blue-200 focus:ring-2 focus:ring-blue-500/50 focus:outline-none"
       >
         JD
       </button>
 
       <!-- Click Outside Overlay -->
-      <div 
-        v-if="isProfileMenuOpen" 
-        @click="isProfileMenuOpen = false" 
+      <div
+        v-if="isProfileMenuOpen"
+        @click="isProfileMenuOpen = false"
         class="fixed inset-0 z-40"
       ></div>
 
       <!-- Dropdown Menu -->
-      <div 
-        v-if="isProfileMenuOpen" 
-        class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-border/50 py-2 z-50 transform origin-top-right transition-all"
+      <div
+        v-if="isProfileMenuOpen"
+        class="border-border/50 absolute right-0 z-50 mt-2 w-48 origin-top-right transform rounded-xl border bg-white py-2 shadow-lg transition-all"
       >
-        <div class="px-4 py-2 border-b border-gray-100 mb-1">
-          <p class="text-sm font-semibold text-foreground">John Doe</p>
-          <p class="text-xs text-muted-foreground truncate">john@example.com</p>
+        <div class="mb-1 border-b border-gray-100 px-4 py-2">
+          <p class="text-foreground text-sm font-semibold">John Doe</p>
+          <p class="text-muted-foreground truncate text-xs">john@example.com</p>
         </div>
-        
-        <button 
+
+        <button
           @click="isProfileMenuOpen = false"
-          class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-2 transition"
+          class="flex w-full items-center gap-2 px-4 py-2 text-left text-sm text-gray-700 transition hover:bg-gray-50"
         >
-          <Icon name="lucide:settings" class="w-4 h-4 text-gray-400" />
+          <Icon
+            name="lucide:settings"
+            class="h-4 w-4 text-gray-400"
+          />
           Settings
         </button>
-        
-        <button 
+
+        <button
           @click="isProfileMenuOpen = false"
-          class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 flex items-center gap-2 transition"
+          class="flex w-full items-center gap-2 px-4 py-2 text-left text-sm text-red-600 transition hover:bg-red-50"
         >
-          <Icon name="lucide:log-out" class="w-4 h-4 text-red-400" />
+          <Icon
+            name="lucide:log-out"
+            class="h-4 w-4 text-red-400"
+          />
           Logout
         </button>
       </div>

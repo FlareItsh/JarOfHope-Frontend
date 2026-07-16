@@ -3,7 +3,7 @@
     class="bg-background border-border/50 flex h-full w-full shrink-0 flex-col md:w-80 md:border-r"
   >
     <!-- Search -->
-    <div class="shrink-0 p-6">
+    <div class="shrink-0 px-4 py-2">
       <div class="relative">
         <div
           class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4"
@@ -16,7 +16,7 @@
         <input
           type="text"
           placeholder="Search Chats"
-          class="border-border/40 text-foreground placeholder:text-muted-foreground w-full rounded-full border bg-white py-3 pr-4 pl-12 text-sm font-medium shadow-sm transition focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+          class="border-border/40 text-foreground placeholder:text-muted-foreground w-full rounded-xl border bg-white py-3 pr-4 pl-12 text-sm font-medium shadow-sm transition focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
         />
       </div>
     </div>
