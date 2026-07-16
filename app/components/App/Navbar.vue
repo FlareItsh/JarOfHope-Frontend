@@ -14,7 +14,7 @@
             <span class="text-2xl font-bold">
               <span>Jar</span>
               <span class="text-primary">Of</span>
-              <span class="text-secondary">Hope</span>
+              <span class="text-amber-400">Hope</span>
             </span>
           </div></a
         >
@@ -41,7 +41,9 @@
         </div>
         <div class="hidden md:block">
           <div class="ml-4 flex items-center md:ml-6">
-            <AppButton variant="primary">Sign In</AppButton>
+            <a href="/auth">
+              <AppButton variant="primary">Login</AppButton>
+            </a>
           </div>
         </div>
         <div class="-mr-2 flex md:hidden">
@@ -144,11 +146,16 @@
         </div>
         <div class="border-border mt-auto border-t pt-4 pb-6">
           <div class="px-4">
-            <AppButton
-              variant="primary"
-              class="w-full"
-              >Sign In</AppButton
+            <a
+              href="/auth"
+              class="block w-full"
             >
+              <AppButton
+                variant="primary"
+                class="w-full"
+                >Login</AppButton
+              >
+            </a>
           </div>
         </div>
       </div>
