@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-background border-border/50 flex h-full w-full shrink-0 flex-col md:w-80 md:border-r"
+    class="bg-primary/10 border-border/50 flex h-full w-full shrink-0 flex-col md:w-80 md:border-r"
   >
     <!-- Search -->
     <div class="shrink-0 px-4 py-2">
@@ -26,7 +26,7 @@
       <!-- Active User -->
       <div
         @click="$emit('select')"
-        class="bg-muted/50 mx-3 mb-1 flex cursor-pointer items-center gap-4 rounded-2xl p-4 transition"
+        class="bg-primary/20 mx-3 mb-1 flex cursor-pointer items-center gap-4 rounded-2xl p-4 transition"
       >
         <img
           src="https://i.pravatar.cc/150?u=1"

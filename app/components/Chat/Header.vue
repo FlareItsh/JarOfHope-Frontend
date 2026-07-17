@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-background border-border flex shrink-0 items-center justify-between border-b px-6 py-3 md:px-8"
+    class="bg-primary/15 border-border flex shrink-0 items-center justify-between border-b px-6 py-3 md:px-8"
   >
     <div class="flex items-center gap-2">
       <!-- Mobile Back Button -->
