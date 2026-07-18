@@ -1,10 +1,10 @@
 export const useApi = <T>(url: string | (() => string), options: any = {}) => {
   const config = useRuntimeConfig()
-  const token = useCookie('auth_token')
+  const token = useCookie('token')
 
   return useFetch<T>(url, {
     ...options,
-    baseURL: config.public.apiBase,
+    baseURL: config.public.apiBaseURL,
     headers: {
       Accept: 'application/json',
       ...options.headers,
@@ -15,11 +15,11 @@ export const useApi = <T>(url: string | (() => string), options: any = {}) => {
 
 export const $api = <T>(url: string, options: any = {}) => {
   const config = useRuntimeConfig()
-  const token = useCookie('auth_token')
+  const token = useCookie('token')
 
   return $fetch<T>(url, {
     ...options,
-    baseURL: config.public.apiBase,
+    baseURL: config.public.apiBaseURL,
     headers: {
       Accept: 'application/json',
       ...options.headers,

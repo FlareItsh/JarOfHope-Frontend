@@ -1,3 +1,35 @@
+<script setup>
+import { ref } from 'vue'
+
+const isProfileMenuOpen = ref(false)
+
+import { AuthService } from '~/api/auth/AuthService'
+
+const authService = new AuthService()
+const showConfirmLogout = ref(false)
+const isLoggingOut = ref(false)
+
+const handleLogout = () => {
+  showConfirmLogout.value = true
+}
+
+const confirmLogout = async () => {
+  isLoggingOut.value = true
+  try {
+    await authService.logout()
+  } catch (error) {
+    console.error('Logout failed:', error)
+  } finally {
+    const tokenCookie = useCookie('token')
+    tokenCookie.value = null
+
+    showConfirmLogout.value = false
+    isLoggingOut.value = false
+    navigateTo('/')
+  }
+}
+</script>
+
 <template>
   <div
     class="border-border bg-background relative z-50 flex items-center justify-between border px-6 py-4"
@@ -45,34 +77,31 @@
           <p class="text-muted-foreground truncate text-xs">john@example.com</p>
         </div>
 
-        <button
+        <AppButton
+          variant="ghost"
           @click="isProfileMenuOpen = false"
-          class="flex w-full items-center gap-2 px-4 py-2 text-left text-sm text-gray-700 transition hover:bg-gray-50"
+          class="flex w-full justify-start gap-2 px-4 py-2 text-left text-sm text-gray-700 transition hover:bg-gray-50"
         >
           <Icon
             name="lucide:settings"
             class="h-4 w-4 text-gray-400"
           />
           Settings
-        </button>
+        </AppButton>
 
-        <button
-          @click="isProfileMenuOpen = false"
-          class="flex w-full items-center gap-2 px-4 py-2 text-left text-sm text-red-600 transition hover:bg-red-50"
+        <AppButton
+          variant="ghost"
+          @click="confirmLogout"
+          :disabled="isLoggingOut"
+          class="flex w-full justify-start gap-2 px-4 py-2 text-left text-sm text-red-600 transition hover:bg-red-50 hover:text-red-700"
         >
           <Icon
             name="lucide:log-out"
             class="h-4 w-4 text-red-400"
           />
           Logout
-        </button>
+        </AppButton>
       </div>
     </div>
   </div>
 </template>
-
-<script setup>
-import { ref } from 'vue'
-
-const isProfileMenuOpen = ref(false)
-</script>
