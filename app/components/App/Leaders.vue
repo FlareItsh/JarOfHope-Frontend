@@ -23,7 +23,7 @@ let leaders = [
   ],
   [
     4,
-    'Kiko Abayan',
+    'Fertuliano B. Abayan',
     '/leaders/Kiko.png',
     'Mobile App and Web Development',
     'SHS Representative',
