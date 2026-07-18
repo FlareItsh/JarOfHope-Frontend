@@ -211,8 +211,7 @@ const handleLogin = async () => {
       maxAge: rememberMe.value ? 60 * 60 * 24 * 30 : undefined, // 30 days if remember me
     })
     tokenCookie.value = response.token
-
-    router.push('/chatbox')
+    router.push('/admin/chatbox')
   } catch (e: any) {
     error.value = e.message || 'An error occurred during login.'
   }
