@@ -32,7 +32,7 @@ const submitMessage = async () => {
   if (!form.message) return
 
   isSubmitting.value = true
-  await new Promise((resolve) => setTimeout(resolve, 1000))
+  await new Promise((resolve) => setTimeout(resolve, 1800))
   isSubmitting.value = false
   isSubmitted.value = true
 }
@@ -54,7 +54,7 @@ const submitMessage = async () => {
         leave-to-class="opacity-0 -translate-y-4"
         mode="out-in"
       >
-        <div v-if="!isSubmitted">
+        <div v-if="!isSubmitted && !isSubmitting">
           <p class="text-muted-foreground mb-6 text-sm">
             Share your concerns, report issues, or provide feedback about
             school events and services.
@@ -100,10 +100,23 @@ const submitMessage = async () => {
                 variant="primary"
                 :disabled="!form.message || isSubmitting"
               >
-                {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+                {{ isSubmitting ? 'Dropping...' : 'Drop Message' }}
               </AppButton>
             </div>
           </form>
+        </div>
+
+        <div v-else-if="isSubmitting" class="flex flex-col items-center justify-center py-12 min-h-[350px]">
+          <div class="relative w-40 h-40 flex items-center justify-center">
+            <!-- The Envelope (Dropping) -->
+            <svg class="absolute top-0 w-12 h-12 text-primary drop-shadow-md animate-drop-in-jar z-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            
+            <!-- The Jar -->
+            <img src="/icons/logo.png" alt="Jar of Hope" class="absolute bottom-0 w-24 h-auto z-10 drop-shadow-xl" />
+          </div>
+          <h2 class="mt-6 text-lg font-bold text-foreground animate-pulse">Dropping into the jar...</h2>
         </div>
 
         <div v-else class="flex flex-col items-center py-6 text-center">
@@ -122,3 +135,15 @@ const submitMessage = async () => {
     </div>
   </AppModal>
 </template>
+
+<style scoped>
+@keyframes dropInJar {
+  0% { transform: translateY(-40px) scale(1) rotate(0deg); opacity: 0; }
+  20% { opacity: 1; transform: translateY(-20px) scale(1) rotate(-5deg); }
+  70% { transform: translateY(40px) scale(0.6) rotate(15deg); opacity: 1; }
+  100% { transform: translateY(50px) scale(0.2) rotate(25deg); opacity: 0; }
+}
+.animate-drop-in-jar {
+  animation: dropInJar 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+</style>

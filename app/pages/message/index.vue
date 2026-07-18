@@ -19,8 +19,8 @@ const submitMessage = async () => {
 
   isSubmitting.value = true
 
-  // Simulate API call
-  await new Promise((resolve) => setTimeout(resolve, 1000))
+  // Wait for the animation to play before showing success screen
+  await new Promise((resolve) => setTimeout(resolve, 1800))
 
   isSubmitting.value = false
   isSubmitted.value = true
@@ -51,7 +51,7 @@ const saveAccount = () => {
         mode="out-in"
       >
         <div
-          v-if="!isSubmitted"
+          v-if="!isSubmitted && !isSubmitting"
           class="bg-card border-border overflow-hidden rounded-2xl border shadow-sm"
         >
           <div class="px-6 py-8 sm:p-10">
@@ -108,13 +108,30 @@ const saveAccount = () => {
                   type="submit"
                   variant="primary"
                   size="lg"
-                  :disabled="!form.message || isSubmitting"
+                  :disabled="!form.message"
                 >
-                  {{ isSubmitting ? 'Sending...' : 'Send Anonymously' }}
+                  Drop Message
                 </AppButton>
               </div>
             </form>
           </div>
+        </div>
+
+        <!-- Interstitial Animation: Dropping in Jar -->
+        <div
+          v-else-if="isSubmitting"
+          class="bg-card border-border overflow-hidden rounded-2xl border shadow-sm flex flex-col items-center justify-center p-16 min-h-[450px]"
+        >
+          <div class="relative w-48 h-48 flex items-center justify-center">
+            <!-- The Envelope (Dropping) -->
+            <svg class="absolute top-0 w-16 h-16 text-primary drop-shadow-md animate-drop-in-jar z-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            
+            <!-- The Jar -->
+            <img src="/icons/logo.png" alt="Jar of Hope" class="absolute bottom-0 w-32 h-auto z-10 drop-shadow-xl" />
+          </div>
+          <h2 class="mt-8 text-xl font-bold text-foreground animate-pulse">Dropping into the jar...</h2>
         </div>
 
         <!-- Phase 2: Success & Account Creation -->
@@ -236,3 +253,15 @@ const saveAccount = () => {
     </div>
   </main>
 </template>
+
+<style scoped>
+@keyframes dropInJar {
+  0% { transform: translateY(-50px) scale(1) rotate(0deg); opacity: 0; }
+  20% { opacity: 1; transform: translateY(-30px) scale(1) rotate(-5deg); }
+  70% { transform: translateY(40px) scale(0.6) rotate(15deg); opacity: 1; }
+  100% { transform: translateY(60px) scale(0.2) rotate(25deg); opacity: 0; }
+}
+.animate-drop-in-jar {
+  animation: dropInJar 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+</style>
