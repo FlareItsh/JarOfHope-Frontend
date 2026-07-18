@@ -1,6 +1,4 @@
 <template>
-  <AppNavbar class="sticky top-0 z-50" />
-
   <main class="flex min-h-screen flex-1 flex-col">
     <!-- Hero Section -->
     <section
@@ -191,9 +189,6 @@
       </div>
     </section>
   </main>
-
-  <AppFooter />
-
   <AppModal
     v-model="isReminderModalOpen"
     title="Before You Write..."

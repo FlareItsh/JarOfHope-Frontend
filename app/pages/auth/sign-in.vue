@@ -184,6 +184,9 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+  layout: 'auth-layout',
+})
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useCookie } from '#imports'
