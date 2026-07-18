@@ -4,12 +4,14 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-
   css: ['~/assets/css/main.css'],
-
   modules: ['@nuxt/fonts', '@nuxt/icon', '@nuxt/image', '@nuxtjs/ngrok'],
-
   vite: {
     plugins: [tailwindcss()],
+  },
+  runtimeConfig: {
+    public: {
+      apiBaseURL: process.env.API_BASE_URL,
+    },
   },
 })
