@@ -34,27 +34,33 @@
 
     <div class="relative z-10 mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div
-        class="bg-card border-border bg-card/90 border px-4 py-8 shadow-xl backdrop-blur-md sm:rounded-xl sm:px-10"
+        class="bg-card/90 border-border border px-4 py-8 shadow-xl backdrop-blur-md sm:rounded-xl sm:px-10"
       >
         <form
           class="space-y-6"
           @submit.prevent="handleLogin"
         >
+          <div
+            v-if="error"
+            class="rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-500"
+          >
+            {{ error }}
+          </div>
           <div>
             <label
-              for="email"
+              for="nickname"
               class="text-foreground block text-sm font-medium"
             >
-              Email address
+              Nickname
             </label>
             <div class="mt-1">
               <input
-                id="email"
-                name="email"
-                type="email"
-                autocomplete="email"
+                id="nickname"
+                name="nickname"
+                type="text"
+                autocomplete="nickname"
                 required
-                v-model="email"
+                v-model="nickname"
                 class="border-input placeholder-muted-foreground focus:ring-primary focus:border-primary bg-background text-foreground block w-full appearance-none rounded-md border px-3 py-2 shadow-sm transition-shadow focus:ring-2 focus:outline-none sm:text-sm"
                 placeholder="nickname123"
               />
@@ -177,16 +183,35 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useCookie } from '#imports'
+import { AuthService } from '~/api/auth/AuthService'
 
-const email = ref('')
+const nickname = ref('')
 const password = ref('')
 const rememberMe = ref(false)
 const showPassword = ref(false)
+const error = ref('')
 
-const handleLogin = () => {
-  console.log('Login attempt with:', email.value)
-  // Integrate with your authentication logic here
+const router = useRouter()
+const authService = new AuthService()
+
+const handleLogin = async () => {
+  error.value = ''
+  try {
+    const response = await authService.login(nickname.value, password.value)
+
+    // Store token in cookie
+    const tokenCookie = useCookie('token', {
+      maxAge: rememberMe.value ? 60 * 60 * 24 * 30 : undefined, // 30 days if remember me
+    })
+    tokenCookie.value = response.token
+
+    router.push('/chatbox')
+  } catch (e: any) {
+    error.value = e.message || 'An error occurred during login.'
+  }
 }
 </script>

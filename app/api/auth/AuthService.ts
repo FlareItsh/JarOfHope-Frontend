@@ -10,7 +10,7 @@ export interface LoginResponse {
 }
 
 export class AuthService extends BaseService {
-  async login(email: string, password: string): Promise<LoginResponse> {
+  async login(nickname: string, password: string): Promise<LoginResponse> {
     const runtimeConfig = useRuntimeConfig()
 
     try {
@@ -21,7 +21,7 @@ export class AuthService extends BaseService {
           Accept: 'application/json',
         },
         body: {
-          email,
+          nickname,
           password,
         },
       })
