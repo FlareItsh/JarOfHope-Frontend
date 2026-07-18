@@ -21,20 +21,20 @@
         <div class="flex items-center">
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
-              <a
-                href="/"
+              <NuxtLink
+                to="/"
                 class="text-foreground hover:bg-accent hover:text-accent-foreground rounded-md px-3 py-2 text-sm font-medium transition-colors"
-                >Home</a
+                >Home</NuxtLink
               >
-              <a
-                href="#about"
+              <NuxtLink
+                to="/#about"
                 class="text-foreground hover:bg-accent hover:text-accent-foreground rounded-md px-3 py-2 text-sm font-medium transition-colors"
-                >About</a
+                >How it Works</NuxtLink
               >
-              <a
-                href="#footer"
+              <NuxtLink
+                to="/#leaders"
                 class="text-foreground hover:bg-accent hover:text-accent-foreground rounded-md px-3 py-2 text-sm font-medium transition-colors"
-                >Credits</a
+                >Credits</NuxtLink
               >
             </div>
           </div>

@@ -164,7 +164,9 @@
     </section>
 
     <!-- Meet the Senators Section -->
-    <AppLeaders />
+    <div id="leaders">
+      <AppLeaders />
+    </div>
 
     <!-- CTA Section -->
     <section class="bg-card border-border border-t py-24">

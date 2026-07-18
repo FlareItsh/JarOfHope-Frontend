@@ -17,10 +17,25 @@
             class="mb-4 h-12 w-auto"
           />
           <p class="text-muted-foreground max-w-sm text-sm">
-            A safe space for STI College of Davao student voices, shared stories, and mutual support.
-            Drop your thoughts, lift your burdens, and let hope grow together.
+            A safe space for STI College of Davao student voices, shared
+            stories, and mutual support. Drop your thoughts, lift your burdens,
+            and let hope grow together.
           </p>
-          <p class="mt-4 text-primary font-medium text-sm">
+          <div
+            class="mt-6 flex items-center justify-center gap-6 md:justify-start"
+          >
+            <img
+              src="/icons/SSC%20Logo.png"
+              alt="SSC Logo"
+              class="h-12 w-auto drop-shadow-sm transition-transform hover:scale-105"
+            />
+            <img
+              src="/icons/STI%20College%20Davao%20logo.png"
+              alt="STI College Davao Logo"
+              class="h-12 w-auto drop-shadow-sm transition-transform hover:scale-105"
+            />
+          </div>
+          <p class="text-primary mt-6 text-sm font-medium">
             An initiative by the Supreme Student Council (Term 2026-2027)
           </p>
         </div>
@@ -34,24 +49,24 @@
           </h3>
           <ul class="space-y-3">
             <li>
-              <a
-                href="#"
+              <NuxtLink
+                to="/"
                 class="text-muted-foreground hover:text-primary text-base transition-colors"
-                >Home</a
+                >Home</NuxtLink
               >
             </li>
             <li>
-              <a
-                href="#"
+              <NuxtLink
+                to="/#about"
                 class="text-muted-foreground hover:text-primary text-base transition-colors"
-                >About</a
+                >How it Works</NuxtLink
               >
             </li>
             <li>
-              <a
-                href="#"
+              <NuxtLink
+                to="/#leaders"
                 class="text-muted-foreground hover:text-primary text-base transition-colors"
-                >Credits</a
+                >Credits</NuxtLink
               >
             </li>
           </ul>
@@ -76,7 +91,7 @@
               <a
                 href="#"
                 class="text-muted-foreground hover:text-primary text-base transition-colors"
-                >Twitter</a
+                >Tiktok</a
               >
             </li>
             <li>
@@ -95,11 +110,13 @@
         class="border-border mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 text-center md:flex-row md:gap-0 md:text-left"
       >
         <p class="text-muted-foreground text-sm">
-          &copy; {{ new Date().getFullYear() }} Jar of Hope &mdash; STI College of Davao. All rights
-          reserved.
+          &copy; {{ new Date().getFullYear() }} Jar of Hope &mdash; STI College
+          of Davao. All rights reserved.
         </p>
         <p class="text-muted-foreground text-sm">
-          Developed by <span class="text-foreground font-medium">Rayver Dasalla</span> (Senate President & Lead Developer)
+          Developed by
+          <span class="text-foreground font-medium">Rayver Dasalla</span>
+          (Senate President & Lead Developer)
         </p>
       </div>
     </div>
