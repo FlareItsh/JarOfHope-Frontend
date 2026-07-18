@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-card text-card-foreground border-border hover:border-primary/30 hover:shadow-primary/5 group relative flex h-full w-full cursor-pointer flex-col gap-3 rounded-2xl border p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+    class="bg-card text-card-foreground border-border border-l-primary hover:border-primary/50 hover:bg-primary/[0.02] group relative flex h-full w-full cursor-pointer flex-col gap-3 rounded-2xl border border-l-4 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
   >
     <!-- Card Header / Profile -->
     <div class="flex items-center justify-between">

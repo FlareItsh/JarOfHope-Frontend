@@ -12,6 +12,11 @@ export default defineNuxtRouteMiddleware((to, from) => {
 
   // If the user is authenticated and trying to access the login page
   if (isAuthenticated && to.path === '/auth/sign-in') {
-    return navigateTo('/admin/chatbox')
+    const user = useCookie('user')
+    if (user.value?.role === 'admin') {
+      return navigateTo('/admin/chatbox')
+    } else {
+      return navigateTo('/student/chatbox')
+    }
   }
 })
