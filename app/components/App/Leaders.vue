@@ -1,3 +1,36 @@
+<script setup lang="ts">
+let leaders = [
+  [
+    1,
+    'Rachelle Ann T. Pamad',
+    '/leaders/Rachelle.png',
+    'BS in Hospitatlity Management',
+    'HTM Representative',
+  ],
+  [
+    2,
+    'Rayver P. Dasalla',
+    '/leaders/Flare.png',
+    'BS in Computer Science',
+    'Senate President',
+  ],
+  [
+    3,
+    'Sean Tristan Dave M. Ragas',
+    '/leaders/Sean.png',
+    'BS in Information Technology',
+    'ICT Representative',
+  ],
+  [
+    4,
+    'Kiko Abayan',
+    '/leaders/Kiko.png',
+    'Mobile App and Web Development',
+    'SHS Representative',
+  ],
+]
+</script>
+
 <template>
   <section class="bg-background py-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -11,80 +44,29 @@
       </div>
 
       <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
-        <!-- Senator 1 -->
-        <div class="space-y-4 text-center">
+        <div
+          v-for="[id, name, image, track, position] in leaders"
+          :key="id"
+          class="space-y-4 text-center"
+        >
           <div
             class="border-card group relative mx-auto h-40 w-40 cursor-pointer overflow-hidden rounded-full border-4 shadow-lg transition-transform duration-300 hover:scale-105"
           >
             <img
-              src="https://ui-avatars.com/api/?name=Senator+1&background=random"
-              alt="Senator Placeholder"
-              class="h-full w-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
+              :src="image"
+              :alt="name"
+              class="h-full w-full object-cover transition-all duration-300 group-hover:grayscale-0"
             />
           </div>
           <div>
-            <h3 class="text-foreground text-xl font-bold">Senator Name</h3>
-            <p class="text-primary mt-1 text-sm font-medium">Student Senator</p>
-            <p class="text-muted-foreground text-xs mt-1">Course / Track placeholder</p>
-          </div>
-        </div>
-
-        <!-- Senator 2 -->
-        <div class="space-y-4 text-center">
-          <div
-            class="border-card group relative mx-auto h-40 w-40 cursor-pointer overflow-hidden rounded-full border-4 shadow-lg transition-transform duration-300 hover:scale-105"
-          >
-            <img
-              src="https://ui-avatars.com/api/?name=Senator+2&background=random"
-              alt="Senator Placeholder"
-              class="h-full w-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
-            />
-          </div>
-          <div>
-            <h3 class="text-foreground text-xl font-bold">Senator Name</h3>
-            <p class="text-primary mt-1 text-sm font-medium">Student Senator</p>
-            <p class="text-muted-foreground text-xs mt-1">Course / Track placeholder</p>
-          </div>
-        </div>
-
-        <!-- Senator 3 -->
-        <div class="space-y-4 text-center">
-          <div
-            class="border-card group relative mx-auto h-40 w-40 cursor-pointer overflow-hidden rounded-full border-4 shadow-lg transition-transform duration-300 hover:scale-105"
-          >
-            <img
-              src="https://ui-avatars.com/api/?name=Senator+3&background=random"
-              alt="Senator Placeholder"
-              class="h-full w-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
-            />
-          </div>
-          <div>
-            <h3 class="text-foreground text-xl font-bold">Senator Name</h3>
-            <p class="text-primary mt-1 text-sm font-medium">Student Senator</p>
-            <p class="text-muted-foreground text-xs mt-1">Course / Track placeholder</p>
-          </div>
-        </div>
-
-        <!-- Senator 4 -->
-        <div class="space-y-4 text-center">
-          <div
-            class="border-card group relative mx-auto h-40 w-40 cursor-pointer overflow-hidden rounded-full border-4 shadow-lg transition-transform duration-300 hover:scale-105"
-          >
-            <img
-              src="https://ui-avatars.com/api/?name=Senator+4&background=random"
-              alt="Senator Placeholder"
-              class="h-full w-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
-            />
-          </div>
-          <div>
-            <h3 class="text-foreground text-xl font-bold">Senator Name</h3>
-            <p class="text-primary mt-1 text-sm font-medium">Student Senator</p>
-            <p class="text-muted-foreground text-xs mt-1">Course / Track placeholder</p>
+            <h3 class="text-foreground text-xl font-bold">{{ name }}</h3>
+            <p class="text-primary mt-1 text-sm font-medium">{{ position }}</p>
+            <p class="text-muted-foreground mt-1 text-xs">
+              {{ track }}
+            </p>
           </div>
         </div>
       </div>
     </div>
   </section>
 </template>
-
-<script setup></script>
