@@ -10,7 +10,7 @@ const form = reactive({
 })
 
 const accountForm = reactive({
-  nickname: 'BraveFalcon' + Math.floor(Math.random() * 1000),
+  nickname: '',
   password: '',
 })
 
@@ -19,6 +19,13 @@ const submitMessage = async () => {
 
   isSubmitting.value = true
 
+  try {
+    const data = await $api('/generate-nickname')
+    accountForm.nickname = data.nickname || 'BraveFalcon' + Math.floor(Math.random() * 1000)
+  } catch (e) {
+    accountForm.nickname = 'BraveFalcon' + Math.floor(Math.random() * 1000)
+  }
+
   // Wait for the animation to play before showing success screen
   await new Promise((resolve) => setTimeout(resolve, 1800))
 
@@ -26,14 +33,42 @@ const submitMessage = async () => {
   isSubmitted.value = true
 }
 
-const saveAccount = () => {
-  if (!accountForm.nickname || !accountForm.password) return
+const saveAccount = async (withPassword = true) => {
+  if (!accountForm.nickname) return
+  if (withPassword && !accountForm.password) return
 
-  // Here you would typically link the credentials to the newly created message thread
-  alert(`Account saved! Nickname: ${accountForm.nickname}`)
+  try {
+    const payload = {
+        category: form.category,
+        message: form.message,
+        nickname: accountForm.nickname,
+    }
+    
+    if (withPassword) {
+        payload.password = accountForm.password
+    }
 
-  // Redirect to dashboard or home
-  window.location.href = '/'
+    const data = await $api('/messages', {
+        method: 'POST',
+        body: payload
+    })
+
+    if (data) {
+        if (data.token) {
+            localStorage.setItem('token', data.token)
+        }
+        
+        if (withPassword) {
+            window.location.href = '/student/chatbox'
+        } else {
+            window.location.href = '/'
+        }
+    } else {
+        console.error(data.message || 'Failed to submit message')
+    }
+  } catch (e) {
+      console.error(e.data?.message || 'Error submitting message.')
+  }
 }
 </script>
 
@@ -192,10 +227,12 @@ const saveAccount = () => {
                 If you want to read responses from the council later, you can
                 create a tracking account now. We've generated a random nickname
                 for you, but feel free to change it.
+                <br><br>
+                <span class="text-amber-600 font-medium">Note: If you choose "No Thanks", you won't be able to log in to track your replies as a password is required to access the account later.</span>
               </p>
 
               <form
-                @submit.prevent="saveAccount"
+                @submit.prevent="saveAccount(true)"
                 class="space-y-4"
               >
                 <div>
@@ -239,7 +276,7 @@ const saveAccount = () => {
                   <AppButton
                     type="button"
                     variant="outline"
-                    href="/"
+                    @click="saveAccount(false)"
                     class="w-full justify-center text-center sm:flex-1"
                   >
                     No Thanks, Return Home
