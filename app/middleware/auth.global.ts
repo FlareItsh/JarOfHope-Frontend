@@ -1,6 +1,9 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-  const token = useCookie('token')
-  const isAuthenticated = !!token.value
+  // If we are on the server, skip auth check because we use localStorage
+  if (import.meta.server) return
+
+  const token = localStorage.getItem('token')
+  const isAuthenticated = !!token
 
   // Define public routes that don't require authentication
   const publicRoutes = ['/', '/auth/sign-in', '/message']
@@ -12,8 +15,10 @@ export default defineNuxtRouteMiddleware((to, from) => {
 
   // If the user is authenticated and trying to access the login page
   if (isAuthenticated && to.path === '/auth/sign-in') {
-    const user = useCookie('user')
-    if (user.value?.role === 'admin') {
+    const userStr = localStorage.getItem('user')
+    const user = userStr ? JSON.parse(userStr) : null
+
+    if (user?.role === 'admin') {
       return navigateTo('/admin/chatbox')
     } else {
       return navigateTo('/student/chatbox')

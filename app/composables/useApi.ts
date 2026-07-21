@@ -1,6 +1,6 @@
 export const useApi = <T>(url: string | (() => string), options: any = {}) => {
   const config = useRuntimeConfig()
-  const token = useCookie('token')
+  const token = import.meta.client ? localStorage.getItem('token') : null
 
   return useFetch<T>(url, {
     ...options,
@@ -8,14 +8,14 @@ export const useApi = <T>(url: string | (() => string), options: any = {}) => {
     headers: {
       Accept: 'application/json',
       ...options.headers,
-      Authorization: token.value ? `Bearer ${token.value}` : '',
+      Authorization: token ? `Bearer ${token}` : '',
     },
   })
 }
 
 export const $api = <T>(url: string, options: any = {}) => {
   const config = useRuntimeConfig()
-  const token = useCookie('token')
+  const token = import.meta.client ? localStorage.getItem('token') : null
 
   return $fetch<T>(url, {
     ...options,
@@ -23,7 +23,7 @@ export const $api = <T>(url: string, options: any = {}) => {
     headers: {
       Accept: 'application/json',
       ...options.headers,
-      Authorization: token.value ? `Bearer ${token.value}` : '',
+      Authorization: token ? `Bearer ${token}` : '',
     },
   })
 }

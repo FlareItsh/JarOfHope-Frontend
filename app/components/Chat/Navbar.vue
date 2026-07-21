@@ -34,8 +34,12 @@ const confirmLogout = async () => {
   } catch (error) {
     console.error('Logout failed:', error)
   } finally {
-    const tokenCookie = useCookie('token')
-    tokenCookie.value = null
+    if (import.meta.client) {
+      localStorage.removeItem('token')
+      localStorage.removeItem('uuid')
+      localStorage.removeItem('role')
+      localStorage.removeItem('user')
+    }
 
     showConfirmLogout.value = false
     isLoggingOut.value = false
@@ -53,7 +57,7 @@ const confirmLogout = async () => {
   >
     <a href="/">
       <div class="flex items-center">
-        <div class="shrink-0 mr-3">
+        <div class="mr-3 shrink-0">
           <img
             src="/icons/logo.png"
             alt="Jar of Hope"
