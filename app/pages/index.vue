@@ -1,6 +1,4 @@
 <template>
-  <AppNavbar class="sticky top-0 z-50" />
-
   <main class="flex min-h-screen flex-1 flex-col">
     <!-- Hero Section -->
     <section
@@ -166,7 +164,9 @@
     </section>
 
     <!-- Meet the Senators Section -->
-    <AppLeaders />
+    <div id="leaders">
+      <AppLeaders />
+    </div>
 
     <!-- CTA Section -->
     <section class="bg-card border-border border-t py-24">
@@ -191,9 +191,6 @@
       </div>
     </section>
   </main>
-
-  <AppFooter />
-
   <AppModal
     v-model="isReminderModalOpen"
     title="Before You Write..."

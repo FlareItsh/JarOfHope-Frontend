@@ -1,3 +1,44 @@
+<script setup lang="ts">
+definePageMeta({
+  layout: 'auth-layout',
+})
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { AuthService } from '~/api/auth/AuthService'
+
+const nickname = ref('')
+const password = ref('')
+const rememberMe = ref(false)
+const showPassword = ref(false)
+const error = ref('')
+
+const router = useRouter()
+const authService = new AuthService()
+
+const handleLogin = async () => {
+  error.value = ''
+  try {
+    const response = await authService.login(nickname.value, password.value)
+
+    // Store token in localStorage
+    if (import.meta.client) {
+      localStorage.setItem('token', response.token)
+      localStorage.setItem('uuid', response.user.uuid)
+      localStorage.setItem('role', response.user.role)
+      localStorage.setItem('user', JSON.stringify(response.user))
+    }
+
+    if (response.user.role === 'admin') {
+      router.push('/admin/chatbox')
+    } else {
+      router.push('/student/chatbox')
+    }
+  } catch (e: any) {
+    error.value = e.message || 'An error occurred during login.'
+  }
+}
+</script>
+
 <template>
   <div
     class="bg-background relative flex min-h-screen flex-col justify-center overflow-hidden py-12 sm:px-6 lg:px-8"
@@ -182,36 +223,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { useCookie } from '#imports'
-import { AuthService } from '~/api/auth/AuthService'
-
-const nickname = ref('')
-const password = ref('')
-const rememberMe = ref(false)
-const showPassword = ref(false)
-const error = ref('')
-
-const router = useRouter()
-const authService = new AuthService()
-
-const handleLogin = async () => {
-  error.value = ''
-  try {
-    const response = await authService.login(nickname.value, password.value)
-
-    // Store token in cookie
-    const tokenCookie = useCookie('token', {
-      maxAge: rememberMe.value ? 60 * 60 * 24 * 30 : undefined, // 30 days if remember me
-    })
-    tokenCookie.value = response.token
-
-    router.push('/chatbox')
-  } catch (e: any) {
-    error.value = e.message || 'An error occurred during login.'
-  }
-}
-</script>

@@ -1,5 +1,19 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const isScrolled = ref(false)
+
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 20
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 
 const isProfileMenuOpen = ref(false)
 
@@ -20,8 +34,12 @@ const confirmLogout = async () => {
   } catch (error) {
     console.error('Logout failed:', error)
   } finally {
-    const tokenCookie = useCookie('token')
-    tokenCookie.value = null
+    if (import.meta.client) {
+      localStorage.removeItem('token')
+      localStorage.removeItem('uuid')
+      localStorage.removeItem('role')
+      localStorage.removeItem('user')
+    }
 
     showConfirmLogout.value = false
     isLoggingOut.value = false
@@ -32,21 +50,32 @@ const confirmLogout = async () => {
 
 <template>
   <div
-    class="border-border bg-background relative z-50 flex items-center justify-between border px-6 py-4"
+    :class="[
+      'border-border/60 bg-background/80 sticky top-0 z-50 flex items-center justify-between border-b px-6 backdrop-blur-md transition-all duration-300',
+      isScrolled ? 'py-2 shadow-sm' : 'py-4',
+    ]"
   >
     <a href="/">
       <div class="flex items-center">
-        <div class="shrink-0">
+        <div class="mr-3 shrink-0">
           <img
             src="/icons/logo.png"
             alt="Jar of Hope"
-            class="h-12 w-auto"
+            :class="[
+              'w-auto drop-shadow-sm transition-all duration-300',
+              isScrolled ? 'h-8' : 'h-10',
+            ]"
           />
         </div>
-        <span class="text-2xl font-bold">
-          <span>Jar</span>
+        <span
+          :class="[
+            'font-bold tracking-tight transition-all duration-300',
+            isScrolled ? 'text-xl' : 'text-2xl',
+          ]"
+        >
+          <span class="text-foreground">Jar</span>
           <span class="text-primary">Of</span>
-          <span class="text-amber-400">Hope</span>
+          <span class="text-amber-500">Hope</span>
         </span>
       </div>
     </a>
@@ -55,7 +84,7 @@ const confirmLogout = async () => {
     <div class="relative">
       <button
         @click="isProfileMenuOpen = !isProfileMenuOpen"
-        class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-sm font-bold text-blue-600 transition hover:bg-blue-200 focus:ring-2 focus:ring-blue-500/50 focus:outline-none"
+        class="bg-primary/10 text-primary hover:bg-primary/20 ring-primary/30 flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold uppercase transition-all duration-200 hover:scale-105 hover:shadow-sm focus:ring-2 focus:outline-none"
       >
         JD
       </button>
